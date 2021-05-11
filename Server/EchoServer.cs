@@ -29,20 +29,20 @@ namespace Server
 
         private async Task EchoInit(Socket socket)
         {
-            do
+            while(true)
             {
-                var clientSocket = await Task.Factory.FromAsync(
-                    new Func<AsyncCallback, object, IAsyncResult>(socket.BeginAccept),
+                var socketWrappedInTask = await Task.Factory.FromAsync(
+                    new Func<AsyncCallback, object, IAsyncResult>(socket.BeginAccept), //Begin Accept returns IAsyncResult
                     new Func<IAsyncResult,Socket>(socket.EndAccept),
                     null).ConfigureAwait(false);
 
                 Console.WriteLine("Echo Server: Client Connected!");
 
-                using var stream = new NetworkStream(clientSocket, true);
+                using var stream = new NetworkStream(socketWrappedInTask, true);
                 var buffer = new byte[1024];
 
 
-                do
+                while(true)
                 {
                     int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
 
@@ -55,10 +55,10 @@ namespace Server
 
                     await stream.WriteAsync(buffer, 0, bytesRead).ConfigureAwait(false);
 
-                } while (true);
+                } 
 
 
-            } while (true);
+            } 
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace Server
 {
@@ -6,7 +7,12 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            
+
+
+
+            //var cancel = new CancellationTokenSource();
+
+
             EchoServer echo = new EchoServer();
 
             echo.StartEcho(9999);
