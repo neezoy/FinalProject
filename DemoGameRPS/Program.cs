@@ -5,9 +5,9 @@ namespace DemoGameRPS
 {
     class Program
     {
+       
 
-
-        public static void PlayRPS(Random ran )
+        public static void PlayRPS(Random ran, MethodInfo m, Object classInstance  )
         {
 
             int num = ran.Next(1, 11);
@@ -17,8 +17,13 @@ namespace DemoGameRPS
             if (num < 7 && num > 2) { Console.WriteLine("Rock!"); }  //50%
 
             //hook Method 
+
+            //load parameters
+            object[] param = new object[1];
+            param[0] = num;
+            m.Invoke(classInstance, param);
             //send
-            
+
 
         }
 
@@ -26,37 +31,37 @@ namespace DemoGameRPS
         {
             Console.WriteLine("Welcome To Rock Paper Scissors!");
 
-            // hook program
-            var dll = Assembly.LoadFile(@"C:\Users\MacBook\Desktop\CSProject\FinalProject\Client\bin\Debug\netcoreapp3.1\Client.dll");
-            Type type = dll.GetType("Client.Hook");
-            if(type != null)
-            {
-                var onLoadmethod = type.GetMethod("OnLoad");
-
-                
-
-                if (onLoadmethod != null)
-                {
-                    onLoadmethod.Invoke(null,null);
-                }
-                else
-                {
-                    Console.WriteLine("method is null");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Null type class");
-            }
+            // hook start
+            var dll = Assembly.LoadFrom(@"C:\Users\MacBook\Desktop\CSProject\FinalProject\Client\bin\Debug\netcoreapp3.1\Client.dll");
+            Type classType = dll.GetType("Client.Hook");
 
             
-           
-               
-            
+
+            //check type
+            if (classType == null){
+                throw new Exception("DLL Type could not be loaded!");
+            }
+          
+            //instanciate class
+            var classInstance = Activator.CreateInstance(classType);
+
+            //Load methods from class
+            var onLoadmethod = classType.GetMethod("OnLoad");
+            var onRollmethod = classType.GetMethod("OnRollEvent", new Type[] { typeof(int) });
+
+            //check method
+            if (onLoadmethod == null | onRollmethod == null)
+            {
+                throw new Exception("DLL Method could not be loaded!");
+            }
+
+            onLoadmethod.Invoke(classInstance, null);
+
+
             System.Random ran = new Random();
 
             while (true) { 
-                PlayRPS(ran);
+                PlayRPS(ran, onRollmethod, classInstance);
                 Console.ReadLine();
             }
             

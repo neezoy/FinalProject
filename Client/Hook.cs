@@ -1,20 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using NetworkLibrary;
+
 
 namespace Client
 {
-    public static class Hook
+    public class Hook
     {
-        public static void OnLoad()
+        ClientConnection connection;
+        
+        public void OnLoad()
         {
-            Console.WriteLine("Hello From DLL");
+            Console.WriteLine("Game client has been hooked!");
+
+            connection = new ClientConnection();
+            connection.Init();
         }
 
 
-        public static void OnGameEvent(int a)
+        public async void OnRollEvent(int a)
         {
-            Console.WriteLine("Hello From DLL");
+            Console.WriteLine("Hello From Roll: " +  a);
+
+            await connection.Send().ConfigureAwait(false);
         }
     }
 }
