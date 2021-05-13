@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkLibrary;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
@@ -41,9 +42,28 @@ namespace Server
                 using var stream = new NetworkStream(socketWrappedInTask, true);
                 var buffer = new byte[1024];
 
+                var prot = new Protocol();
+                MessageHandler mh = new MessageHandler();
 
-                while(true)
-                {
+
+
+                while (true)
+               {
+                    var receivedMessage = await prot.Receive<MessageModel>(stream).ConfigureAwait(false);
+
+                    //Console.WriteLine(receivedMessage.MessageData);
+
+                   _=  Task.Run(() => mh.Handle(receivedMessage)).ConfigureAwait(false);
+
+
+                    if (receivedMessage.MessageHeaderType !=  11 && receivedMessage.MessageHeaderType != 12) { 
+                    await prot.Send(stream, receivedMessage).ConfigureAwait(false);
+                    }
+
+
+
+                    /*
+
                     int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
 
 
@@ -54,12 +74,13 @@ namespace Server
                     }
 
                     await stream.WriteAsync(buffer, 0, bytesRead).ConfigureAwait(false);
+                    */
+                }
 
-                } 
 
-
-            } 
+            }
         }
+
 
     }
 }

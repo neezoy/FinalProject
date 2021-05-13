@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Client\Client.csproj", "{E1A65236-94E8-4A3C-938E-A8819097ADE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkLibrary", "NetworkLibrary\NetworkLibrary.csproj", "{C28C4061-003D-442F-85B1-3861DDC5A7F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetworkLibrary", "NetworkLibrary\NetworkLibrary.csproj", "{C28C4061-003D-442F-85B1-3861DDC5A7F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoGameRPS", "DemoGameRPS\DemoGameRPS.csproj", "{0CF6AE93-A7DF-4716-A39D-D2487B7E0059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoGameRPS", "DemoGameRPS\DemoGameRPS.csproj", "{0CF6AE93-A7DF-4716-A39D-D2487B7E0059}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{715DAD6A-DA5D-47B2-969C-8DF9FA129778}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{0CF6AE93-A7DF-4716-A39D-D2487B7E0059}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CF6AE93-A7DF-4716-A39D-D2487B7E0059}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CF6AE93-A7DF-4716-A39D-D2487B7E0059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

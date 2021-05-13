@@ -25,10 +25,9 @@ namespace NetworkLibrary
             var header = await ReadAsync(stream, 4); //only read 4 first bytes
             //Header bytes contain body length.
             var bodyLength = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(header, 0)); //changing bytes from network order to Host order. 
-
             var bodyBytes = await ReadAsync(stream, bodyLength);
-
-            return Decode<T>(bodyBytes);
+         
+            return Decode<T>(bodyBytes); 
         }
 
         static (byte[] header, byte[] body) Encode<T>(T message)
@@ -67,10 +66,13 @@ namespace NetworkLibrary
 
         static async Task<byte[]> ReadAsync(NetworkStream stream, int bytesToRead)
         {
+
             var buffer = new byte[bytesToRead];
             var bytesRead = 0;
             while (bytesRead < bytesToRead)
             {
+               
+                //Console.WriteLine("Buffeer: " +BitConverter.ToString(buffer));
                 //runs in seperate thread, so I wont return it untill all bytes have been read.
                 var bytesReceived = bytesRead + await stream.ReadAsync(buffer, bytesRead, (bytesToRead - bytesRead)).ConfigureAwait(false);
 

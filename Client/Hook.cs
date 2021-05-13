@@ -16,14 +16,15 @@ namespace Client
 
             connection = new ClientConnection();
             connection.Init();
+            connection.AESInit();
         }
 
 
-        public async void OnRollEvent(int a)
+        public async void OnRollEvent(String result)
         {
-            Console.WriteLine("Hello From Roll: " +  a);
+            Console.WriteLine("Hello From DLL! Sending Roll!");
 
-            await connection.Send().ConfigureAwait(false);
+            await connection.Send(result).ConfigureAwait(false);
         }
     }
 }

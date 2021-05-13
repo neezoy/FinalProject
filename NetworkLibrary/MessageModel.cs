@@ -7,7 +7,9 @@ namespace NetworkLibrary
     public class MessageModel
     {
         public int MessageHeaderType { get; set; }
-        public string MessageData { get; set; }
+
+        public String TimeData { get; set; }
+        public String MessageData { get; set; }
         
     }
 }
