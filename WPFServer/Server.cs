@@ -29,8 +29,8 @@ namespace WPFServer
 
             consoleCallback("Server bound to: "+ ipAddress.ToString() + " Port: " + port);
 
-            //_ = Task.Run(() => ServerInit(socket, consoleCallback));
-            new Thread(ServerInit(socket, consoleCallback)).Start();
+            _ = Task.Run(() => ServerInit(socket, consoleCallback));
+            //new Thread(ServerInit(socket, consoleCallback)).Start();
         }
 
 
@@ -62,7 +62,7 @@ namespace WPFServer
                     
 
                     string a = await Task.Run(() => mh.Handle(receivedMessage,consoleCallback));
-                    Application.Current.Dispatcher.Invoke(new Action(() => { consoleCallback(a); }));
+                    //Application.Current.Dispatcher.Invoke(new Action(() => { consoleCallback(a); }));
 
 
                     if (receivedMessage.MessageHeaderType != 11 && receivedMessage.MessageHeaderType != 12)

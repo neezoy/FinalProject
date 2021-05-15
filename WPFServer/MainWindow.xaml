@@ -38,11 +38,11 @@
 
         <lvc:PieChart x:Name="Chart" Grid.Column="3" Grid.Row="1" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
             <lvc:PieChart.Series>
-                <lvc:PieSeries x:Name="Scissors" Title="Scissors" Values="2" DataLabels="True"
+                <lvc:PieSeries x:Name="Scissors" Title="Scissors" Values="21" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries x:Name="Paper" Title="Paper" Values="3" DataLabels="True" 
+                <lvc:PieSeries x:Name="Paper" Title="Paper" Values="32" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries x:Name="Rock" Title="Rock" Values="6" DataLabels="True" 
+                <lvc:PieSeries x:Name="Rock" Title="Rock" Values="27" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
 
             </lvc:PieChart.Series>
