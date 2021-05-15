@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Inspired by Richard Weeks' Socket programming Tutorial https://github.com/zeul72/SocketsProgramming
+using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
@@ -10,7 +11,7 @@ namespace NetworkLibrary
 {
     public class Protocol
     {
-        public async Task Send<T>(NetworkStream stream, T message)
+        public async Task Send(NetworkStream stream, MessageModel message)
         {
             var (header, body) = Encode(message);
             await stream.WriteAsync(header, 0, header.Length).ConfigureAwait(false);

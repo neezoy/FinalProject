@@ -1,4 +1,5 @@
-﻿using NetworkLibrary;
+﻿//Inspired by Richard Weeks' Socket programming Tutorial https://github.com/zeul72/SocketsProgramming
+using NetworkLibrary;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -61,20 +62,7 @@ namespace Server
                     }
 
 
-
-                    /*
-
-                    int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length).ConfigureAwait(false);
-
-
-                    //if no bytes, socket is gone
-                    if(bytesRead == 0)
-                    {
-                        break;
-                    }
-
-                    await stream.WriteAsync(buffer, 0, bytesRead).ConfigureAwait(false);
-                    */
+               
                 }
 
 

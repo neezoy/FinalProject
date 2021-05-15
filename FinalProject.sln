@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoGameRPS", "DemoGameRPS\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{715DAD6A-DA5D-47B2-969C-8DF9FA129778}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFServer", "WPFServer\WPFServer.csproj", "{6E23A705-D013-4DEB-B2FB-96A9AFFA19C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{715DAD6A-DA5D-47B2-969C-8DF9FA129778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E23A705-D013-4DEB-B2FB-96A9AFFA19C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E23A705-D013-4DEB-B2FB-96A9AFFA19C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E23A705-D013-4DEB-B2FB-96A9AFFA19C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E23A705-D013-4DEB-B2FB-96A9AFFA19C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

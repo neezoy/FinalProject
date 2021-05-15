@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace NetworkLibrary
 {
     public class MessageHandler
     {
         byte[] AESKey = null;
         byte[] AESIV = null;
+       
 
         public async Task Handle(MessageModel m)
         {
@@ -46,6 +48,54 @@ namespace NetworkLibrary
                 Console.WriteLine("Decryped: " + aes.AESDecrypt(msg));
             }
 
+
+
+
         }
+
+        //Handeling for UI
+
+        public async Task<string> Handle(MessageModel m, Action<string> consoleCallback)
+        {
+            var message = m;
+
+
+            switch (m.MessageHeaderType)
+            {
+                case 0:
+                    consoleCallback("Message Type: Plain Text Message");
+                    break;
+                case 10:
+                    consoleCallback("\nMessage Type: AES encrypted!");
+                    consoleCallback("Encrypted: " + m.MessageData);
+                    AESDecrypt(m.MessageData);
+                    break;
+                case 11:
+                    consoleCallback("Message Type: AES Key = " + m.MessageData);
+                    AESKey = Convert.FromBase64String(m.MessageData);
+                    break;
+                case 12:
+                    consoleCallback("Message Type: AES IV = " + m.MessageData);
+                    AESIV = Convert.FromBase64String(m.MessageData);
+                    break;
+                default:
+                    throw new Exception("Message Header Type not recognized!");
+
+
+            }
+
+
+            void AESDecrypt(String msg)
+            {
+                AES aes = new AES(AESKey, AESIV);
+                consoleCallback("Decryped: " + aes.AESDecrypt(msg));
+            }
+
+            return "nice test";
+
+        }
+
+        
     }
+
 }
