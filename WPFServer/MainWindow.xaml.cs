@@ -28,6 +28,7 @@ namespace WPFServer
         PieSeries rock;
         PieChart chart;
         TextBox console;
+        Button startServer;
 
         double currPaper;
         double currRock;
@@ -46,7 +47,9 @@ namespace WPFServer
             paper = this.FindName("Paper") as PieSeries;
             rock = this.FindName("Rock") as PieSeries;
             console = this.FindName("Console") as TextBox;
-            
+            startServer = this.FindName("StartServer") as Button;
+
+           
           
           
             PointLabel = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
@@ -67,29 +70,59 @@ namespace WPFServer
 
             serv.StartServer(9999, WriteToConsole);
             WriteToConsole("Server Started!");
+            startServer.Content = "Connected";
+            startServer.Background = Brushes.Green;
+            
         }
 
         public void WriteToConsole(String msg)
         {
-            console.AppendText("\n" + msg);
+
+            this.Dispatcher.Invoke(() =>
+            {
+                console.AppendText("\n" + msg);
+
+                console.ScrollToEnd();
+
+                if(msg.Contains("Scissors") == true)
+                {
+                    UpdateChart("Scissors");
+                }
+                if (msg.Contains("Rock") == true)
+                {
+                    UpdateChart("Rock");
+                }
+                if (msg.Contains("Paper") == true)
+                {
+                    UpdateChart("Paper");
+                }
+
+
+            });
         }
 
         public void UpdateChart(String type)
         {
 
+
             switch (type)
             {
-                case "Paper!":
+                case "Paper":
                     paper.Values = new ChartValues<double> { currPaper + 1 };
+                    currPaper += 1;
                     break;
-                case "Rock!":
-                    paper.Values = new ChartValues<double> { currRock + 1 };
+                case "Rock":
+                    rock.Values = new ChartValues<double> { currRock + 1 };
+                    currRock += 1;
                     break;
-                case "Scissors!":
-                    paper.Values = new ChartValues<double> { currScissors + 1 };
+                case "Scissors":
+                    scissors.Values = new ChartValues<double> { currScissors + 1 };
+                    currScissors += 1;
                     break;
             }
-            
+
+
+
         }
 
 

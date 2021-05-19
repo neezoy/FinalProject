@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class EchoServer
+    class ConsoleEchoServer
     {
 
         public void StartEcho(int port)

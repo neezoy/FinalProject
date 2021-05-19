@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace DemoGameRPS
 {
-    class Program
+    class RPSGame
     {
        
 

@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Server
 {
-    class Bootstrap
+    class Start
     {
         static void Main(string[] args)
         {
@@ -13,7 +13,7 @@ namespace Server
             //var cancel = new CancellationTokenSource();
 
 
-            EchoServer echo = new EchoServer();
+            ConsoleEchoServer echo = new ConsoleEchoServer();
 
             echo.StartEcho(9999);
             Console.WriteLine("Echo Server Started!");

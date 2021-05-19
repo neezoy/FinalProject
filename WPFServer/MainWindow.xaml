@@ -21,28 +21,28 @@
             <ColumnDefinition Width = "20" />
             <ColumnDefinition Width = "auto" />
             <ColumnDefinition Width = "10" />
-            
+
             <ColumnDefinition Width = "*" />
             <ColumnDefinition Width = "20" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        
-        
+
+
         <Button x:Name="StartServer" Grid.Column="1" Grid.Row="2" Content="Start Server" IsCancel="True" IsDefault="True" AllowDrop="True" Click="StartServer_Click" />
 
         <lvc:PieChart x:Name="Chart" Grid.Column="3" Grid.Row="1" LegendLocation="Bottom" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
             <lvc:PieChart.Series>
-                <lvc:PieSeries x:Name="Scissors" Title="Scissors" Values="21" DataLabels="True"
+                <lvc:PieSeries x:Name="Scissors" Title="Scissors" Values="0" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries x:Name="Paper" Title="Paper" Values="32" DataLabels="True" 
+                <lvc:PieSeries x:Name="Paper" Title="Paper" Values="0" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                <lvc:PieSeries x:Name="Rock" Title="Rock" Values="27" DataLabels="True" 
+                <lvc:PieSeries x:Name="Rock" Title="Rock" Values="0" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
 
             </lvc:PieChart.Series>
@@ -60,24 +60,24 @@
                 <TextBlock x:Name="PortTxt"
                     Text="Port: 9999 &#x0d;&#x0a;&#x0d;&#x0a;IP: Loopback&#x0d;&#x0a;&#x0d;&#x0a;AES: True" />
 
-              
+
             </GroupBox>
         </Border>
 
 
 
-       
 
-        <TextBox x:Name="Console" Grid.Column="3" Grid.Row="2"
+
+        <TextBox x:Name="Console" Grid.Column="3" Grid.Row="2" 
             Style="{StaticResource MaterialDesignOutlinedTextBox}"
             VerticalAlignment="Top"
-            Height="100"
+            Height="auto"
             AcceptsReturn="True"
             TextWrapping="Wrap"
             VerticalScrollBarVisibility="Auto"
             materialDesign:HintAssist.Hint="Console"
             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
-        
+
 
 
     </Grid>

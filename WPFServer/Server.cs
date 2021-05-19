@@ -1,4 +1,5 @@
-﻿using NetworkLibrary;
+﻿//Inspired by Richard Weeks' Socket programming Tutorial https://github.com/zeul72/SocketsProgramming
+using NetworkLibrary;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -61,7 +62,7 @@ namespace WPFServer
 
                     
 
-                    string a = await Task.Run(() => mh.Handle(receivedMessage,consoleCallback));
+                    _= Task.Run(() => mh.Handle(receivedMessage,consoleCallback));
                     //Application.Current.Dispatcher.Invoke(new Action(() => { consoleCallback(a); }));
 
 
